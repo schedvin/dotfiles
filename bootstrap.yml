@@ -1,0 +1,8 @@
+---
+- name: Bootstrap development environment
+  hosts: localhost
+  tasks:
+    - name: Stow
+      tags: stow
+      import_role:
+        name: stow
