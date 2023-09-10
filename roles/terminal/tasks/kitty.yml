@@ -1,0 +1,7 @@
+- name: Install kitty
+  become: true
+  apt:
+    name:
+      - kitty
+    state: present
+

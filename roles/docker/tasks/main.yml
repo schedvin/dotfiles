@@ -1,0 +1,43 @@
+- name: Remove conflicting packages
+  ansible.builtin.package:
+    name:
+      - docker.io
+      - docker-compose
+      - docker-doc
+      - podman-docker
+    state: absent
+
+- name: Install docker dependencies
+  ansible.builtin.package:
+    name:
+      - ca-certificates
+      - curl
+      - gnupg
+      - lsb-release
+
+- name: Add docker repository
+  ansible.builtin.apt_repository:
+    repo: "deb [arch=amd64 trusted=yes] https://download.docker.com/linux/ubuntu jammy stable"
+    state: present
+    update_cache: true
+
+- name: Import docker
+  import_tasks: docker.yml
+
+- name: Enable docker service
+  ansible.builtin.systemd:
+    enabled: yes
+    name: docker
+    state: started
+  become: yes
+
+- name: Ensure docker group exist
+  ansible.builtin.group:
+    name: "docker"
+    state: present
+
+- name: Add to group
+  ansible.builtin.user:
+    append: yes
+    groups: docker
+    name: "{{ lookup('env','USER') }}"

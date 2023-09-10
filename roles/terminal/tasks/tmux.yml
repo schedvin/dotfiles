@@ -1,0 +1,19 @@
+- name: Install TMUX
+  become: true
+  apt:
+    name:
+      - tmux
+    state: present
+
+- name: Install TMUX TPM
+  ansible.builtin.git:
+    repo: 'https://github.com/tmux-plugins/tpm'
+    dest: ~/.tmux/plugins/tpm
+
+- name: Run install plugins
+  shell: |
+    tmux start-server &&
+    tmux new-session -d &&
+    sleep 1 &&
+    ~/.tmux/plugins/tpm/scripts/install_plugins.sh &&
+    tmux kill-server

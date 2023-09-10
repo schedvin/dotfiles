@@ -1,0 +1,8 @@
+- name: Install utilities
+  become: true
+  apt:
+    name:
+      - fd-find
+      - fzf
+      - ripgrep
+    state: present

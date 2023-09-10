@@ -1,0 +1,16 @@
+- name: Create directory ~/.tmux/plugins/
+  file:
+    path: "{{ ansible_env.HOME }}/.tmux/plugins"
+    state: directory
+
+- name: Import kitty
+  import_tasks: kitty.yml
+
+- name: Import midnight-commander
+  import_tasks: mc.yml
+
+- name: Import tmux
+  import_tasks: tmux.yml
+
+- name: Import recommended
+  import_tasks: recommended.yml
