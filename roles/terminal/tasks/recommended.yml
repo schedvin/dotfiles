@@ -1,4 +1,4 @@
-- name: Install utilities
+- name: Install recommended commands
   become: true
   apt:
     name:
