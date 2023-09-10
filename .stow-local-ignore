@@ -1,7 +1,7 @@
 .git
 roles
 README.md
-__bootstraped__a
+__bootstraped__
 bootstrap.yml
 requirements.yml
 install.sh
