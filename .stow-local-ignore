@@ -1,4 +1,7 @@
 .git
+.gitignore
+.gitmodules
+ansible.cfg
 roles
 README.md
 __bootstraped__
