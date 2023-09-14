@@ -4,5 +4,7 @@
     name:
       - fd-find
       - fzf
+      - jq
       - ripgrep
+      - tidy
     state: present
